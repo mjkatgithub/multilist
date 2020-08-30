@@ -1,76 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import React , { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import Header from './components/header';
-import TodoItem from './components/todoItem';
-import AddTodo from './components/addTodo';
+import React, { useState } from 'react';
+import Home from './screens/home';
+import * as Font from 'expo-font';
+import { AppLoading } from 'expo'
+
+const getFonts = () => Font.loadAsync({
+  'nunito-regular': require('./assets/fonts/Nunito-Regular.ttf'),
+  'nunito-bold': require('./assets/fonts/Nunito-Bold.ttf')
+});
+
 
 export default function App() {
+  const [fontsLoaded, setFontsLoaded] = useState(false);
 
-  //some dummy-data
-  const [todos, setTodos] = useState([
-    { text: 'do stuff', state: 'todo', _id: '1'},
-    { text: 'do other stuff', state: 'todo', _id: '2'},
-    { text: 'do nothing', state: 'todo', _id: '3'}
-  ]);
-
-  const pressHandler = (id) => {
-    setTodos((prevTodos) => {
-      return prevTodos.filter( todo => todo._id != id);
-    });
+  if(fontsLoaded){
+    return (
+      <Home />
+    );
+  } else {
+    return(
+      <AppLoading
+      startAsync={getFonts}
+      onFinish={()=>setFontsLoaded(true)}
+    />
+    );
   }
-
-  const submitHandler = (text) => {
-
-    if(text.length >= 3){
-      setTodos((prevTodos) => {
-        return [
-          { text: text, state: 'todo', _id: Math.random().toString() },
-          ...prevTodos
-        ];
-      });
-    } else {
-      Alert.alert('text too short', 'a todo must consist of at least 3 characters', [
-        {text: 'OK', onPress: () => console.log('alert closed') }
-      ]);
-    }
-  }
-
-  return (
-    <TouchableWithoutFeedback onPress={() => {
-      Keyboard.dismiss();
-    }}>
-      <View style={styles.container}>
-        <Header />
-        <View style={styles.content}>
-          <AddTodo submitHandler={submitHandler}/>
-          <View style={styles.list}>
-            <FlatList
-            keyExtractor={ (item) => item._id }
-              data={todos}
-              renderItem={({ item }) => (
-                <TodoItem item={item} pressHandler={pressHandler} />
-              )}
-            />
-          </View>
-        </View>
-        <StatusBar style="auto" />
-      </View>
-    </TouchableWithoutFeedback>
-  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  content: {
-    flex: 1,
-    padding: 40,
-  },
-  list: {
-    flex: 1,
-    marginTop: 20
-  },
-});
