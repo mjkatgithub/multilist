@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Home from './screens/home';
+import ShopingList from './screens/shopingList'
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo'
+import Navigator from './routes/shopingListStack';
 
 const getFonts = () => Font.loadAsync({
   'nunito-regular': require('./assets/fonts/Nunito-Regular.ttf'),
@@ -14,7 +16,7 @@ export default function App() {
 
   if(fontsLoaded){
     return (
-      <Home />
+      <Navigator />
     );
   } else {
     return(
@@ -25,3 +27,4 @@ export default function App() {
     );
   }
 }
+ 
