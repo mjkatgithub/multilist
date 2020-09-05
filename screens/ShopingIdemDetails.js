@@ -11,8 +11,9 @@ export default function ShopingItemDetails({ navigation }) {
 
   return (
     <View style={globalStyles.container}>
-      <Text>ShopingItemDetails Screen</Text>
-      <Button title="back" onPress={pressHandler} />
+      <Text>{ navigation.getParam('product') }</Text>
+      <Text>by: { navigation.getParam('manufacturer') }</Text>
+      <Text>note: { navigation.getParam('notes') }</Text>
     </View>
   );
 }
