@@ -16,7 +16,7 @@ export default function ShopiingList({ navigation }) {
         keyExtractor={ (item) => item._id }
         data={shopingItem}
         renderItem={({item}) => (
-          <TouchableOpacity onPress={ () => navigation.navigate("Item Deteils", item) }>
+          <TouchableOpacity onPress={ () => navigation.navigate('ShopingItemDetails', item) }>
             <Text style={globalStyles.titleText}>{item.product}</Text>
           </TouchableOpacity>
         )}

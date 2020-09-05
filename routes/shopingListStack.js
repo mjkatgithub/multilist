@@ -1,17 +1,30 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import ShopingList from '../screens/shopingList';
-import ShopingItemDeteils from '../screens/ShopingIdemDetails';
+import ShopingItemDetails from '../screens/shopingItemDetails';
 
 const screens = {
-  "Shoping List": {
-    screen: ShopingList
+  ShopingList: {
+    screen: ShopingList,
+    navigationOptions:{
+      title: 'Shoping List',
+      //headerStyle: {backgroundColor: 'lightgray'}
+    }
   },
-  "Item Deteils": {
-    screen: ShopingItemDeteils
+  ShopingItemDetails: {
+    screen: ShopingItemDetails,
+    navigationOptions:{
+      title: 'Product Details',
+      //headerStyle: {backgroundColor: 'lightgray'}
+    }
   }
 };
 
-const ShopingListStack = createStackNavigator(screens);
+const ShopingListStack = createStackNavigator(screens, {
+  defaultNavigationOptions: {
+    headerTintColor: '#404040',
+    headerStyle: {backgroundColor: 'lightgray'}
+  }
+});
 
 export default createAppContainer(ShopingListStack);
