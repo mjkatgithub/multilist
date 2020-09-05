@@ -1,5 +1,4 @@
 import { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation';
 import ShopingList from '../screens/shopingList';
 import ShopingItemDetails from '../screens/shopingItemDetails';
 
@@ -27,4 +26,4 @@ const ShopingListStack = createStackNavigator(screens, {
   }
 });
 
-export default createAppContainer(ShopingListStack);
+export default ShopingListStack;
