@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   headerText:{
     fontWeight: 'bold',
     fontSize: 20,
-    color: '#333',
+    color: '#404040',
     letterSpacing: 1
   },
   icon: {

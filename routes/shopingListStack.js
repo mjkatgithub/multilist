@@ -29,4 +29,4 @@ const ShopingListStack = createStackNavigator(screens, {
   }
 });
 
-export default ShopingListStack;
+export default ShopingListStack; 
