@@ -10,6 +10,11 @@ const RootDrawerNavigator = createDrawerNavigator({
   About: {
     screen: AboutStack
   }
+},{
+  drawerPosition: 'left',
+  drawerBackgroundColor: 'rgba(200, 200, 200, 0.9)',
 });
 
 export default createAppContainer(RootDrawerNavigator);
+
+//drawerBackgroundColor: '#0000FF',

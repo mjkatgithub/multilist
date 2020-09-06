@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { Text, FlatList, TouchableOpacity } from 'react-native';
 import { globalStyles } from '../styles/global';
 import Card from '../shared/card';
+import Container from '../shared/container';
 
 export default function ShopiingList({ navigation }) {
 
@@ -12,7 +13,7 @@ export default function ShopiingList({ navigation }) {
   ]);
 
   return (
-    <View style={globalStyles.container}>
+    <Container>
       <FlatList
         keyExtractor={ (item) => item._id }
         data={shopingItem}
@@ -24,6 +25,6 @@ export default function ShopiingList({ navigation }) {
           </TouchableOpacity>
         )}
       />
-    </View>
+    </Container>
   );
 }
