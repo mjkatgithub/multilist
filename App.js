@@ -4,7 +4,6 @@ import ShopingList from './screens/shopingList'
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo'
 import Navigator from './routes/drawer';
-import { createAppContainer } from 'react-navigation';
 
 const getFonts = () => Font.loadAsync({
   'nunito-regular': require('./assets/fonts/Nunito-Regular.ttf'),
