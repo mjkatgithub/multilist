@@ -1,37 +1,48 @@
 import React, { useState } from 'react';
-import { Text, FlatList, TouchableOpacity, Modal, StyleSheet, View} from 'react-native';
+import { Text, FlatList, TouchableOpacity, Modal, StyleSheet, View, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { globalStyles } from '../styles/global';
 import Card from '../shared/card';
 import Container from '../shared/container';
 import { MaterialIcons } from '@expo/vector-icons';
-import { ScreenStackHeaderRightView } from 'react-native-screens';
+import ShopingItemForm from './shopingItemForm';
 
 export default function ShopiingList({ navigation }) {
   const [modalOpen, setModalOpen] = useState(false);
-  const [shopingItem, setShopingItem] = useState([
-    { product: 'wurst', manufacturer: 'hans', notes: 'happa-happa', _id: '1' },
-    { product: 'milch', manufacturer: 'mueller', notes: 'schluerf', _id: '2' },
-    { product: 'brot', manufacturer: 'baecker', notes: 'bernd, das...', _id: '3' }
+  const [shopingItems, setShopingItems] = useState([
+    { product: 'wurst', manufacturer: 'hans', amount: 1, notes: 'happa-happa', _id: '1' },
+    { product: 'milch', manufacturer: 'mueller', amount: 5, notes: 'schluerf', _id: '2' },
+    { product: 'brot', manufacturer: 'baecker', amount: 3, notes: 'bernd, das...', _id: '3' }
   ]);
+
+  const addShopingItem = (shopingItem) => {
+    shopingItem._id = Math.random().toString();
+    setShopingItems((currentShopingItems) => {
+      return [shopingItem, ...currentShopingItems]
+    });
+    setModalOpen(false);
+  }
 
   return (
     <Container>
-
       <Modal visible={modalOpen} animationType='slide'>
-        <View style={styles.modalContent}>
-          <MaterialIcons
-            name='close'
-            size={24}
-            style={styles.modalClose}
-            onPress={() => setModalOpen(false)}
-          />
-          <Text>Hello from the modal :)</Text>
-        </View>
+        <Container>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={styles.modalContent}>
+              <MaterialIcons
+                name='close'
+                size={24}
+                style={styles.modalClose}
+                onPress={() => setModalOpen(false)}
+              />
+              <ShopingItemForm addShopingItem={addShopingItem}/>
+            </View>
+            </TouchableWithoutFeedback>
+        </Container>
       </Modal>
 
       <FlatList
         keyExtractor={ (item) => item._id }
-        data={shopingItem}
+        data={shopingItems}
         renderItem={({item}) => (
           <TouchableOpacity onPress={ () => navigation.navigate('ShopingItemDetails', item) }>
             <Card>
@@ -75,7 +86,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   modalContent: {
-    flex: 1
+    flex: 1,
+    backgroundColor: 'rgba(255, 255, 255, 0.9)'
   }
 
 });

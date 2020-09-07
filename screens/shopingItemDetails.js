@@ -16,6 +16,7 @@ export default function ShopingItemDetails({ navigation }) {
       <Card>
         <Text>{ navigation.getParam('product') }</Text>
         <Text>by: { navigation.getParam('manufacturer') }</Text>
+        <Text>amount: { navigation.getParam('amount') }</Text>
         <Text>note: { navigation.getParam('notes') }</Text>
       </Card>
     </Container>
