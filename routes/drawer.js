@@ -1,12 +1,12 @@
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
 import AboutStack from './aboutStack';
-import ShopingListStack from './shopingListStack';
+import ShoppingStack from './shoppingStack';
 import TodoStack from './todoStack';
 
 const RootDrawerNavigator = createDrawerNavigator({
-  "Shoping List": {
-    screen: ShopingListStack
+  "Shopping List": {
+    screen: ShoppingStack
   },
   "Todo List":{
     screen: TodoStack

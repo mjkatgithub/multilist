@@ -1,20 +1,20 @@
 import { createStackNavigator } from 'react-navigation-stack';
-import ShopingList from '../screens/shopingList';
-import ShopingItemDetails from '../screens/shopingItemDetails';
+import ShoppingList from '../screens/shoppingList';
+import ShoppingItemDetails from '../screens/shoppingItemDetails';
 import Header from '../shared/header';
 import React from 'react';
 
 const screens = {
-  ShopingList: {
-    screen: ShopingList,
+  ShoppingList: {
+    screen: ShoppingList,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: () => <Header navigation={navigation} title='Shoping List' />,
+        headerTitle: () => <Header navigation={navigation} title='Shopping List' />,
       }
     }
   },
-  ShopingItemDetails: {
-    screen: ShopingItemDetails,
+  ShoppingItemDetails: {
+    screen: ShoppingItemDetails,
     navigationOptions:{
       title: 'Product Details',
       //headerStyle: {backgroundColor: 'lightgray'}
@@ -22,11 +22,11 @@ const screens = {
   }
 };
 
-const ShopingListStack = createStackNavigator(screens, {
+const ShoppingStack = createStackNavigator(screens, {
   defaultNavigationOptions: {
     headerTintColor: '#404040',
     headerStyle: {backgroundColor: 'lightgray'}
   }
 });
 
-export default ShopingListStack; 
+export default ShoppingStack;

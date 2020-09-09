@@ -4,7 +4,7 @@ import { globalStyles } from '../styles/global';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
-const shopingItemSchema = yup.object({
+const shoppingItemSchema = yup.object({
     product: yup.string()
       .required()
       .min(3),
@@ -17,12 +17,12 @@ const shopingItemSchema = yup.object({
     notes: yup.string()
 });
 
-export default function ShopingItemForm({ addShopingItem }) {
+export default function ShoppingItemForm({ addShopingItem }) {
   return(
     <View style={globalStyles.container}>
       <Formik
         initialValues={{product: '', manufacturer: '', amount: '', notes: '', _id: ''}}
-        validationSchema={shopingItemSchema}
+        validationSchema={shoppingItemSchema}
         onSubmit={ (values, actions) => {
           actions.resetForm();
           addShopingItem(values);

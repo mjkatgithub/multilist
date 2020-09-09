@@ -4,12 +4,12 @@ import { globalStyles } from '../styles/global';
 import Card from '../shared/card';
 import Container from '../shared/container';
 
-export default function ShopingItemDetails({ navigation }) {
+export default function ShoppingItemDetails({ navigation }) {
 
   const pressHandler = () =>{
     navigation.goBack();
     //navigation.pop();
-  }
+  };
 
   return (
     <Container>

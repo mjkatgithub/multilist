@@ -4,23 +4,23 @@ import { globalStyles } from '../styles/global';
 import Card from '../shared/card';
 import Container from '../shared/container';
 import { MaterialIcons } from '@expo/vector-icons';
-import ShopingItemForm from './shopingItemForm';
+import ShoppingItemForm from './shoppingItemForm';
 
-export default function ShopiingList({ navigation }) {
+export default function ShoppingList({ navigation }) {
   const [modalOpen, setModalOpen] = useState(false);
-  const [shopingItems, setShopingItems] = useState([
+  const [shoppingItems, setShoppingItems] = useState([
     { product: 'wurst', manufacturer: 'hans', amount: 1, notes: 'happa-happa', _id: '1' },
     { product: 'milch', manufacturer: 'mueller', amount: 5, notes: 'schluerf', _id: '2' },
     { product: 'brot', manufacturer: 'baecker', amount: 3, notes: 'bernd, das...', _id: '3' }
   ]);
 
-  const addShopingItem = (shopingItem) => {
-    shopingItem._id = Math.random().toString();
-    setShopingItems((currentShopingItems) => {
-      return [shopingItem, ...currentShopingItems]
+  const addShoppingItem = (shoppingItem) => {
+    shoppingItem._id = Math.random().toString();
+    setShoppingItems((currentShoppingItems) => {
+      return [shoppingItem, ...currentShoppingItems]
     });
     setModalOpen(false);
-  }
+  };
 
   return (
     <Container>
@@ -34,7 +34,7 @@ export default function ShopiingList({ navigation }) {
                 style={styles.modalClose}
                 onPress={() => setModalOpen(false)}
               />
-              <ShopingItemForm addShopingItem={addShopingItem}/>
+              <ShoppingItemForm addShopingItem={addShoppingItem}/>
             </View>
             </TouchableWithoutFeedback>
         </Container>
@@ -42,9 +42,9 @@ export default function ShopiingList({ navigation }) {
 
       <FlatList
         keyExtractor={ (item) => item._id }
-        data={shopingItems}
+        data={shoppingItems}
         renderItem={({item}) => (
-          <TouchableOpacity onPress={ () => navigation.navigate('ShopingItemDetails', item) }>
+          <TouchableOpacity onPress={ () => navigation.navigate('ShoppingItemDetails', item) }>
             <Card>
               <Text style={globalStyles.titleText}>{item.product}</Text>
             </Card>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Home from './screens/home';
-import ShopingList from './screens/shopingList'
+import ShopingList from './screens/shoppingList'
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo'
 import Navigator from './routes/drawer';
