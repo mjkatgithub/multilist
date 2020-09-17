@@ -2,4 +2,4 @@
 todolists shoppinglist ...
 
 still wip  
-official news channel for the multi list app: https://t.me/multilist
+for latest news visit the official news channel of the multi list app: https://t.me/multilist
